@@ -1,4 +1,5 @@
 const { contextBridge, ipcRenderer } = require('electron');
+
 // Expose une API sécurisée au contexte de la page web
 contextBridge.exposeInMainWorld('electronAPI', {
   generateChatCompletion: async (prompt) => {

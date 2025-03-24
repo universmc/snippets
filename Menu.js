@@ -1,6 +1,5 @@
 const path = require('path');
 const { app, Menu, MenuItem, BrowserWindow } = require('electron');
-// Function to create a new BrowserWindow with default options
 // Function to create and load a file into a new BrowserWindow
 function createWindow(filePath, options = {}) {
   const window = new BrowserWindow({
@@ -49,18 +48,6 @@ function createMenu() {
         ]
       },
       {
-        label: 'Affichage',
-        submenu: [
-          { label: 'Recharger', role: 'reload' },
-          { label: 'Forcer le rechargement', role: 'forcereload' },
-          { label: 'Outils de développement', role: 'toggledevtools' },
-          { type: 'separator' },
-          { label: 'Zoom +', role: 'zoomin' },
-          { label: 'Zoom -', role: 'zoomout' },
-          { label: 'Réinitialiser le zoom', role: 'resetzoom' }
-        ]
-      },
-      {
         label: 'Models',
         submenu: [
           {
@@ -75,7 +62,7 @@ function createMenu() {
           },
           { type: 'separator' },
           {
-            label: '⏐M⏐ Mixtral',
+            label: '⏐\\ /⏐ Mixtral',
             role:'system',
             models:'',
             click: () => {
@@ -105,8 +92,8 @@ function createMenu() {
           },
           { type: 'separator' },
           {
-            label: '[Ø] Qwant',
-            models:'deepseek-r1-distill-qwen-32b',
+            label: '🐳 DeepSeek',
+            models:'deepseek-r1-distill-llama-70b',
             click: () => {
               // Affichez une boîte de dialogue ou une fenêtre avec les informations "À propos"
               const aboutWindow = new BrowserWindow({ /* ... */ });
@@ -114,6 +101,15 @@ function createMenu() {
             }
           },
           { type: 'separator' },
+          {
+            label: 'Qwant',
+            models:'deepseek-r1-distill-qwen-32b',
+            click: () => {
+              // Affichez une boîte de dialogue ou une fenêtre avec les informations "À propos"
+              const aboutWindow = new BrowserWindow({ /* ... */ });
+              aboutWindow.loadFile('models/about.html');
+            }
+          },
           {
             label: '🧑‍🎤 Avatars',
             models:'anonymous-7b-ar',
@@ -317,7 +313,18 @@ function createMenu() {
           }
         ]
       },
-
+      {
+        label: 'Affichage',
+        submenu: [
+          { label: 'Recharger', role: 'reload' },
+          { label: 'Forcer le rechargement', role: 'forcereload' },
+          { label: 'Outils de développement', role: 'toggledevtools' },
+          { type: 'separator' },
+          { label: 'Zoom +', role: 'zoomin' },
+          { label: 'Zoom -', role: 'zoomout' },
+          { label: 'Réinitialiser le zoom', role: 'resetzoom' }
+        ]
+      },
       {
         label: 'Wallet',
         submenu: [
@@ -388,7 +395,7 @@ function createMenu() {
             click: () => {
               // Affichez une boîte de dialogue ou une fenêtre avec les informations "À propos"
               const aboutWindow = new BrowserWindow({ /* ... */ });
-              aboutWindow.loadFile('terminal.html');
+              aboutWindow.loadFile('about.html');
             }
           },
           {
